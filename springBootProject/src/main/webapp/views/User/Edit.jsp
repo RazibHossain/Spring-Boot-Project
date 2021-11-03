@@ -18,11 +18,12 @@
 <!------ Include the above in your HEAD tag ---------->
 <h2 align="center">Create User </h2>
 
-    <form class="form-horizontal" action='/User/Add/' method="POST" modelAttribute="userform">
+    <form class="form-horizontal" action='/User/Edit/' method="POST" modelAttribute="userform">
+        <input type="hidden" name="id" value="${userform.id}">
        <br><br> User Name: <input type="text" id="username" name="userName" placeholder="" value="${userform.userName}"><br><br>
         Password: <input type="text" id="password" name="password" placeholder="" value="${userform.password}"><br><br>
        Role:  <input type="text" id="role" name="role" placeholder="" value="${userform.role}"><br><br>
-        Enabled: <input type="int" id="enabled" name="enabled" placeholder="" value="${userform.roleuser}"><br><br>
+        Enabled: <input type="int" id="enabled" name="enabled" placeholder="" value="${userform.isenabled()}"><br><br>
 
         <div class="control-group">
             <!-- Button -->

@@ -7,20 +7,28 @@ import javax.persistence.*;
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private int id;
+    @Column(name = "username")
     private String userName;
+    @Column(name = "password")
     private String password;
+    @Column(name = "enabled")
     private boolean enabled;
+    @Column(name = "role")
     private String role;
+    @Column(name = "roleuser")
+    private String roleuser;
 
     public Users() {
     }
 
-    public Users(String userName, String password, boolean enabled, String role) {
+    public Users(String userName, String password, boolean enabled, String role,String roleuser) {
         this.userName = userName;
         this.password = password;
         this.enabled = enabled;
         this.role = role;
+        this.roleuser = roleuser;
     }
 
     public int getId() {
@@ -33,6 +41,14 @@ public class Users {
 
     public String getUserName() {
         return userName;
+    }
+
+    public String getRoleuser() {
+        return roleuser;
+    }
+
+    public void setRoleuser(String roleuser) {
+        this.roleuser = roleuser;
     }
 
     public void setUserName(String userName) {
@@ -71,6 +87,7 @@ public class Users {
                 ", password='" + password + '\'' +
                 ", enabled=" + enabled +
                 ", role='" + role + '\'' +
+                ", roleuser='" + roleuser + '\'' +
                 '}';
     }
 }
