@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:include page="header.jsp"/>
+<jsp:include page="Header_Footer/Header.jsp"/>
 
 <html>
 <head>
@@ -7,6 +7,9 @@
 </head>
 <body>
 <h3>*****Login*****</h3>
+<form action="/User/Add/">
+    <button>Add User</button>
+</form>
 <%--<form action="addEntry">--%>
     <%--ID:   <input type="text" name="ID"><br>--%>
     <%--NAME: <input type="text" name="NAME"><br>--%>
@@ -18,10 +21,10 @@
 <%--<form action="getEntry">--%>
     <%--ID:   <input type="text" name="ID"><br>--%>
     <%--<input type="submit"><br>--%>
-
+<h3>razib 3</h3>
 
 <%--</form>--%>
 </body>
 </html>
 
-<jsp:include page="footer.jsp"/>
+<jsp:include page="Header_Footer/Footer.jsp"/>

@@ -3,15 +3,25 @@ package com.razib.springboot.project.springBootProject.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "User")
+@Table(name = "Users")
 public class Users {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String userName;
     private String password;
-    private boolean active;
-    private String roles;
+    private boolean enabled;
+    private String role;
+
+    public Users() {
+    }
+
+    public Users(String userName, String password, boolean enabled, String role) {
+        this.userName = userName;
+        this.password = password;
+        this.enabled = enabled;
+        this.role = role;
+    }
 
     public int getId() {
         return id;
@@ -37,19 +47,30 @@ public class Users {
         this.password = password;
     }
 
-    public boolean isActive() {
-        return active;
+    public boolean isenabled() {
+        return enabled;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setenabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
-    public String getRoles() {
-        return roles;
+    public String getRole() {
+        return role;
     }
 
-    public void setRoles(String roles) {
-        this.roles = roles;
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "Users{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", enabled=" + enabled +
+                ", role='" + role + '\'' +
+                '}';
     }
 }

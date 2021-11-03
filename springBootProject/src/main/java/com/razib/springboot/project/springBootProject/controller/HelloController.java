@@ -12,12 +12,20 @@ public class HelloController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public Object hellohome(HttpServletRequest request){
-        return "home";
+        return "Home";
+    }
+    @RequestMapping(value = "/Home", method = RequestMethod.GET)
+    public Object hellohome2(HttpServletRequest request){
+        return "Home";
+    }
+    @RequestMapping(value = "/Failure", method = RequestMethod.GET)
+    public Object failerror(HttpServletRequest request){
+        return "Failure";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/Login", method = RequestMethod.GET)
     public Object login(HttpServletRequest request){
-        return "login";
+        return "/Login_Logout/Login";
     }
 
 

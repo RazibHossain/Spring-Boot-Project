@@ -39,7 +39,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
 //                .formLogin().permitAll()
-                .formLogin().loginPage("/login").permitAll()
+                .formLogin().loginPage("/Login")
+                .defaultSuccessUrl("/Home",true)
+                .failureUrl("/Failure").permitAll()
                 .and()
                 .logout().permitAll();
 
@@ -47,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public PasswordEncoder getPasswordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
+    public PasswordEncoder encoder() {
+        return new BCryptPasswordEncoder();
     }
 }
