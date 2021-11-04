@@ -53,8 +53,10 @@ public class UserController {
         userService.updateUser(user);
         return  "redirect:/User/List/";
     }
-
-
-
-
+    @RequestMapping(value = "/Delete/{id}/",method = RequestMethod.GET)
+    public Object userDeleteView(@PathVariable Integer id){
+    userService.deleteById(id);
+//        return "/User/Edit";
+        return  "redirect:/User/List/";
+    }
 }

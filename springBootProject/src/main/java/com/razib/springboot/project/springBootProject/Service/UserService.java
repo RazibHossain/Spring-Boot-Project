@@ -29,6 +29,10 @@ public class UserService {
         return userDao.findAll();
     }
 
+    public void deleteById(Integer userId){
+        userDao.deleteById(userId);
+    }
+
     public Users findUser(Integer id) {
         return userDao.getById(id);
     }
@@ -36,6 +40,8 @@ public class UserService {
         Users users = userDao.getById(user.getId());
 
         users.setUserName(user.getUserName());
+        users.setPassword(passwordEncoder.encode(user.getPassword()));
+        users.setenabled(user.isenabled());
         users.setRole(user.getRole());
         userDao.save(users);
     }

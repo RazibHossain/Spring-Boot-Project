@@ -24,6 +24,7 @@
     <%--<th>Enabled</th>--%>
     <th>roleuser</th>
     <th>Edit</th>
+    <th>Delete</th>
 
     <c:forEach items="${user_list}" var="user">
         <tr>
@@ -35,6 +36,10 @@
             <td><a href="/User/Edit/${user.id}/" >
                 <button class="btn btn-lg" style="background-color:transparent;">
                     <i class="fa fa-pencil"></i> Edit
+                </button></a></td>
+            <td><a href="/User/Delete/${user.id}/" >
+                <button class="btn btn-lg" style="background-color:transparent;">
+                    <i class="fa fa-pencil"></i> Delete
                 </button></a></td>
         </tr>
     </c:forEach>
