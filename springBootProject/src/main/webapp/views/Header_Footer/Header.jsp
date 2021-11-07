@@ -24,6 +24,14 @@
                     <li><a href="/User/List/">List</a></li>
                 </ul>
             </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Batch
+                    <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/Batch/Add/">Add</a></li>
+                    <li><a href="/Batch/List/">List</a></li>
+                </ul>
+            </li>
             <li><a href="#">Page 1</a></li>
             <li><a href="#">Page 2</a></li>
             <li style="alignment: right"><a href="/logout">Logout</a></li>

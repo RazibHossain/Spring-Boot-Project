@@ -1,6 +1,7 @@
 package com.razib.springboot.project.springBootProject.controller;
 
 import com.razib.springboot.project.springBootProject.Service.UserService;
+import com.razib.springboot.project.springBootProject.model.Batch;
 import com.razib.springboot.project.springBootProject.model.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,8 +21,8 @@ public class UserController {
 //    Users user = new Users();
     @RequestMapping(value = "/Add/",method = RequestMethod.GET)
     public Object userAddView(Model model){
-        model.addAttribute("userform", new Users());
-        return "/User/Add";
+        model.addAttribute("batchform", new Batch());
+        return "/Batch/Add";
     }
 
     @RequestMapping(value = "/Add/",method = RequestMethod.POST)

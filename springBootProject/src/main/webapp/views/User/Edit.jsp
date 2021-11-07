@@ -72,7 +72,6 @@
         <td>&nbsp;</td>
     </tr>
 
-
     <tr align="center">
         <td colspan="2" style="padding-right: 300px"><div class="control-group">
             <!-- Button -->
@@ -84,34 +83,7 @@
 
 </table>
 
-
-
 </form>
 
-
-
-
-
-
-
-
-
-
-
-
-    <%--<form class="form-horizontal" action='/User/Edit/' method="POST" modelAttribute="userform">--%>
-        <%--<input type="hidden" name="id" value="${userform.id}">--%>
-       <%--<br><br> User Name: <input type="text" id="username" name="userName" placeholder="" value="${userform.userName}"><br><br>--%>
-        <%--Password: <input type="text" id="password" name="password" placeholder="" value="${userform.password}"><br><br>--%>
-       <%--Role:  <input type="text" id="role" name="role" placeholder="" value="${userform.role}"><br><br>--%>
-        <%--Enabled: <input type="int" id="enabled" name="enabled" placeholder="" value="${userform.isenabled()}"><br><br>--%>
-
-        <%--<div class="control-group">--%>
-            <%--<!-- Button -->--%>
-            <%--<div class="controls">--%>
-                <%--<button class="btn btn-success">Add User</button>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-    <%--</form>--%>
 </body>
 </html>
