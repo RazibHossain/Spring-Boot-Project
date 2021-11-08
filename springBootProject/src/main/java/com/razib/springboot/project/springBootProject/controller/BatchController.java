@@ -45,7 +45,7 @@ public class BatchController {
 @ResponseBody
 public ModelAndView batchListView(){
     ModelAndView mv = new ModelAndView("/Batch/List");
-//    mv.addObject("batchform",batchService.getBatch());
+    mv.addObject("batchform",batchService.getBatch());
     return mv;
 }
 //    @RequestMapping(value = "/List/",method = RequestMethod.POST)

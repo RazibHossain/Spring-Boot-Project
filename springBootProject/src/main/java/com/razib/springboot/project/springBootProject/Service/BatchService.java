@@ -5,6 +5,8 @@ import com.razib.springboot.project.springBootProject.model.Batch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BatchService {
 
@@ -16,7 +18,7 @@ public class BatchService {
         batchDao.save(batch);
 
     }
-    public void getBatch(){
-        batchDao.findAll();
+    public List<Batch> getBatch(){
+       return batchDao.findAll();
     }
 }
