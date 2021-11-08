@@ -5,10 +5,8 @@ import com.razib.springboot.project.springBootProject.model.Batch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/Batch")
@@ -43,17 +41,16 @@ public class BatchController {
 ////        return"/User/List";
 //    }
 //
-//    @RequestMapping(value = "/Add/",method = RequestMethod.GET)
-//    public Object userAddView(Model model){
-//        model.addAttribute("userform", new Users());
-//        return "/User/Add";
-//    }
-//
-//    @RequestMapping(value = "/Add/",method = RequestMethod.POST)
-//    public Object userAdd(@ModelAttribute("userform") Users user){
-//        userService.saveUser(user);
-//        return  "redirect:/User/List/";
-////        return"/User/List";
+@RequestMapping(value = "/List/",method = RequestMethod.GET)
+@ResponseBody
+public ModelAndView batchListView(){
+    ModelAndView mv = new ModelAndView("/Batch/List");
+//    mv.addObject("batchform",batchService.getBatch());
+    return mv;
+}
+//    @RequestMapping(value = "/List/",method = RequestMethod.POST)
+//    public Object userlistShow(@ModelAttribute("userform") Users user){
+//        return "/User/List";
 //    }
 //
 //    @RequestMapping(value = "/Delete/{id}/",method = RequestMethod.GET)

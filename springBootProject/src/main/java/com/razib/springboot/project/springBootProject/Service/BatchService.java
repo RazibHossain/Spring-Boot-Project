@@ -16,4 +16,7 @@ public class BatchService {
         batchDao.save(batch);
 
     }
+    public void getBatch(){
+        batchDao.findAll();
+    }
 }
