@@ -32,7 +32,7 @@
                     <li><a href="/Batch/List/">List</a></li>
                 </ul>
             </li>
-            <li><a href="#">Page 1</a></li>
+            <li><a href="/Upload/file">Uploader</a></li>
             <li><a href="#">Page 2</a></li>
             <li style="alignment: right"><a href="/logout">Logout</a></li>
         </ul>

@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <html>
 <head>
     <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
@@ -23,21 +25,26 @@
     <th>Start Date</th>
     <th>End Date</th>
     <th>Student Capacity</th>
+    <th>Total Student</th>
+    <th>Archived</th>
     <th>Edit</th>
     <th>Delete</th>
 
-    <c:forEach items="${user_list}" var="user">
+    <c:forEach items="${batchform}" var="batch">
         <tr>
-            <td>${user.id}</td>
-            <td>${user.userName}</td>
-            <td>${user.password}</td>
-            <td>${user.role}</td>
-            <td>${user.roleuser}</td>
-            <td><a href="/User/Edit/${user.id}/" >
+            <td>${batch.id}</td>
+            <td>${batch.batchName}</td>
+            <td>${batch.duration}</td>
+            <td ><fmt:formatDate value="${batch.startDate}" pattern="dd-MM-yyyy"/></td>
+            <td><fmt:formatDate value="${batch.endDate}" pattern="dd-MM-yyyy"/></td>
+            <td>${batch.studentCapacity}</td>
+            <td>${batch.totalStudent}</td>
+            <td>${batch.archived}</td>
+            <td><a href="/Batch/Edit/${batch.id}/" >
                 <button class="btn btn-lg" style="background-color:transparent;">
                     <i class="fa fa-pencil"></i> Edit
                 </button></a></td>
-            <td><a href="/User/Delete/${user.id}/" >
+            <td><a href="/Batch/Delete/${batch.id}/" >
                 <button class="btn btn-lg" style="background-color:transparent;">
                     <i class="fa fa-pencil"></i> Delete
                 </button></a></td>

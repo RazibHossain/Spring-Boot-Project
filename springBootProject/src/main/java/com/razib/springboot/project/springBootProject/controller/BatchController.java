@@ -28,19 +28,16 @@ public class BatchController {
 //        return"/User/List";
     }
 
-//    @RequestMapping(value = "/Add/",method = RequestMethod.GET)
-//    public Object userAddView(Model model){
-//        model.addAttribute("userform", new Users());
-//        return "/User/Add";
-//    }
-//
-//    @RequestMapping(value = "/Add/",method = RequestMethod.POST)
-//    public Object userAdd(@ModelAttribute("userform") Users user){
-//        userService.saveUser(user);
-//        return  "redirect:/User/List/";
-////        return"/User/List";
-//    }
-//
+    @RequestMapping(value = "/Edit/{id}/",method = RequestMethod.GET)
+    public Object userEditView(@PathVariable Integer id, Model model){
+        model.addAttribute("batchform", batchService.findBatchById(id));
+        return "/Batch/Edit";
+    }
+    @RequestMapping(value = "/Edit/",method = RequestMethod.POST)
+    public Object userEditPost(@ModelAttribute("batchform") Batch batch){
+        batchService.updateBathById(batch);
+        return  "redirect:/Batch/List/";
+    }
 @RequestMapping(value = "/List/",method = RequestMethod.GET)
 @ResponseBody
 public ModelAndView batchListView(){
@@ -48,15 +45,15 @@ public ModelAndView batchListView(){
     mv.addObject("batchform",batchService.getBatch());
     return mv;
 }
-//    @RequestMapping(value = "/List/",method = RequestMethod.POST)
-//    public Object userlistShow(@ModelAttribute("userform") Users user){
-//        return "/User/List";
-//    }
-//
-//    @RequestMapping(value = "/Delete/{id}/",method = RequestMethod.GET)
-//    public Object userDeleteView(@PathVariable Integer id){
-//        userService.deleteById(id);
-////        return "/User/Edit";
-//        return  "redirect:/User/List/";
-//    }
+    @RequestMapping(value = "/List/",method = RequestMethod.POST)
+    public Object batchListShow(@ModelAttribute("batchform") Batch batch){
+        return "/Batch/List";
+    }
+
+    @RequestMapping(value = "/Delete/{id}/",method = RequestMethod.GET)
+    public Object userDeleteView(@PathVariable Integer batchId){
+        batchService.deleteById(batchId);
+//        return "/User/Edit";
+        return  "redirect:/Batch/List/";
+    }
 }
