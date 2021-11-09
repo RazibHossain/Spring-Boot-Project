@@ -22,7 +22,7 @@ public class UserController {
     @RequestMapping(value = "/Add/",method = RequestMethod.GET)
     public Object userAddView(Model model){
         model.addAttribute("batchform", new Batch());
-        return "/Batch/Add";
+        return "/User/Add";
     }
 
     @RequestMapping(value = "/Add/",method = RequestMethod.POST)
