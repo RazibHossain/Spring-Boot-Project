@@ -1,5 +1,7 @@
 package com.razib.springboot.project.springBootProject.controller;
 
+import com.razib.springboot.project.springBootProject.Dao.UserDao;
+import com.razib.springboot.project.springBootProject.ReportFormDto;
 import com.razib.springboot.project.springBootProject.Service.JasperReports.UserListReports;
 import com.razib.springboot.project.springBootProject.Service.UserService;
 import com.razib.springboot.project.springBootProject.model.Batch;
@@ -10,10 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
-import java.awt.*;
+import javax.servlet.http.HttpServletRequest;
 import java.io.FileNotFoundException;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/User")
@@ -23,6 +26,9 @@ public class UserController {
     private UserService userService;
     @Autowired
     private UserListReports userListReports;
+    @Autowired
+    private UserDao userDao;
+
 //    Users user = new Users();
     @RequestMapping(value = "/Add/",method = RequestMethod.GET)
     public Object userAddView(Model model){
@@ -51,7 +57,7 @@ public class UserController {
         return userService.findUsers();
     }
 
-    
+
     @RequestMapping(value = "/List/",method = RequestMethod.POST)
     public Object userlistShow(@ModelAttribute("userform") Users user){
         return "/User/List";
@@ -67,15 +73,32 @@ public class UserController {
         userService.updateUser(user);
         return  "redirect:/User/List/";
     }
-    @GetMapping("/report/{format}")
-    public String generateReport(@PathVariable String format) throws FileNotFoundException, JRException {
-        return userListReports.exportReport(format);
+    @GetMapping("/Report/")
+    public String generateReport(Model model) throws FileNotFoundException, JRException {
+        model.addAttribute("reportForm", new ReportFormDto());
+        return "User/Report";
+
+    }
+
+    @PostMapping("/Report/")
+        public Object reportGen(@ModelAttribute("reportForm") ReportFormDto reportFormDto) {
+//        System.out.println(userDao.getUserReport(reportFormDto.getUserName(),reportFormDto.getUserId()));
+        List<Users> usersList = userDao.getUserReport(reportFormDto.getUserName(),reportFormDto.getUserId());
+        String format = reportFormDto.getReportFormat();
+        try {
+            userListReports.exportReport(format,usersList);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+        System.out.println(reportFormDto);
+        return "User/ReportSuccessPage";
     }
 
     @RequestMapping(value = "/Delete/{id}/",method = RequestMethod.GET)
     public Object userDeleteView(@PathVariable Integer id){
     userService.deleteById(id);
-//        return "/User/Edit";
         return  "redirect:/User/List/";
     }
 }

@@ -22,6 +22,7 @@
                 <ul class="dropdown-menu">
                     <li><a href="/User/Add/">Add</a></li>
                     <li><a href="/User/List/">List</a></li>
+                    <li><a href="/User/Report/">Report (Jasper)</a></li>
                 </ul>
             </li>
             <li class="dropdown">

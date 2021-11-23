@@ -20,13 +20,15 @@ public class UserListReports {
     @Autowired
     private UserRepository userRepository;
 
-    public String exportReport(String reportFormat) throws FileNotFoundException, JRException {
+
+
+    public String exportReport(String reportFormat, List<Users> usersList) throws FileNotFoundException, JRException {
         String path = "C:\\Users\\Dell\\Desktop\\razib\\RemoteSystemsTempFiles";
-        List<Users> users = userRepository.findAll();
+//        List<Users> users = userRepository.findAll();
         //load file and compile it
         File file = ResourceUtils.getFile("classpath:UserList.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
-        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(users);
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(usersList);
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("createdBy", "RazibHossain");
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
